@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-5">
+    <app-recipe-book></app-recipe-book>
+  </div>
+  <div class="col-md-7">
+    <app-recipe-detail [recipe]="selectedRecipe" *ngIf="selectedRecipe; else noRecipe"></app-recipe-detail>
+    <ng-template #noRecipe>
+      <p appBasicHightlight>Please select a recipe - styled with a custom directive</p>
+      <p [appGoodPracticeHighlight]="'#00eaff'" [defaultColor]="'orangered'">This is a better directive- styled with a custom directive</p>
+      <p appGoodPracticeHighlight [defaultColor]="'#00eaff'" [appGoodPracticeHighlight]="orangered">This is a better directive- styled with a custom directive</p>
+      <p *appTestStructural="0" appGoodPracticeHighlight [defaultColor]="'#00eaff'" [appGoodPracticeHighlight]="orangered">This is a better directive- styled with a custom directive with a custom structural directive</p>
+    </ng-template>
+  </div>
+</div>

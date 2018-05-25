@@ -1,0 +1,26 @@
+
+// Partial sass file containing base - low level styles
+// Global resets
+// Body element selectors
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+// REM = root font size
+// If you set root font size as a hard coded px value - if the user changes the root font size, the REM is still based on this hard coded px value
+// Overall root font size setting
+// Default browser font size is defaulted to 16px but we want to set our root font size to 10px so that calculating REM is easier
+// 10/16 = .625% = 10px
+// defines 1 rem = 10px
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  padding: 3rem;
+}

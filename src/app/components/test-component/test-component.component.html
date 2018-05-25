@@ -1,0 +1,41 @@
+<p class="test">
+  dynamic number:  {{ testNumber }}
+</p>
+<p>
+  {{ getData() }}
+</p>
+<!-- <input type="text" class="control-form" (input)="onUpdateComponentName($event)"> -->
+
+<br>
+<label for="">Component Name:</label>
+<br>
+<input type="text" class="control-form" [(ngModel)]="componentName">
+<br>
+<br>
+<button class="btn btn-primary" [disabled]="isDisabled" (click)="onCreateComponent()">
+  Create new Component
+</button>
+<br>
+<br>
+<!-- Structural Directive -->
+<p *ngIf="componentCreationStatus; else noComponent">Component was created. Name: {{ componentName }}</p>
+<ng-template #noComponent>
+  <p>
+    No component created
+  </p>
+</ng-template>
+<!-- End Structural Directive -->
+
+<!-- Attribute Directive - behavior/appearance -->
+<p [ngStyle]="{'background-color': getColor()}">{{ attributeDirectiveStatus }}</p>
+
+<p [ngClass]="{'online': attributeDirectiveStatus === 'online'}">{{ attributeDirectiveStatus }}</p>
+<!-- End Attribute Directive -->
+
+<br>
+
+<h1>List of created components</h1>
+<h1 *ngFor="let component of components; let i = index;"
+    [ngStyle]="{'background-color': i % 2 ? 'orangered' : '#00eaff'}"
+    [ngClass]="{'online': i % 2  }"
+    >{{ component }}</h1>
