@@ -20,3 +20,25 @@
     </button>
   </div>
 </div>
+<div class="row">
+  <div class="col-xs-12">
+    <h1>ROUTER NAV PARAMS: </h1>
+    <h3>{{ testPathParam.id }} : {{ testPathParam.myVar }}</h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="nav nav-tabs">
+      <li routerLinkActive="active">
+        <a [routerLink]="['/2', 2, 'sd']" >Load url path var</a>
+      </li>
+      <li routerLinkActive="active">
+        <a
+          [routerLink]="['/2', 10, 'edit']"
+          [queryParams]="{testQueryParam: '1'}"
+          fragment="testFrag"
+        >Test route</a>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
 // Services
 import { TestService } from './services/test.service';
@@ -25,6 +26,31 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TestElementComponent } from './components/test-element/test-element.component';
 import { DropdownDirective } from './directives/dropdown.directive';
 
+const appRoutes: Routes = [
+  {
+    path: '',
+    component: TestElementComponent
+  },
+  {
+    path: '1',
+    component: ShoppingListComponent
+  },
+  {
+    path: '2',
+    component: DashboardComponent
+  },
+  {
+    // dynamic path parameters via :
+    path: '2/:id/:myVar',
+    component: DashboardComponent
+  },
+  {
+    // dynamic path parameters via :
+    path: '2/:id/edit',
+    component: DashboardComponent
+  },
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,11 +67,12 @@ import { DropdownDirective } from './directives/dropdown.directive';
     BasicHighlightDirective,
     GoodPracticeHighlightDirective,
     TestStructuralDirective,
-    DropdownDirective
+    DropdownDirective,
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
     TestService,
