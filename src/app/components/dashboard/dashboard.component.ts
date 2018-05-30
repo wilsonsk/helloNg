@@ -18,6 +18,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
   testPathParam: {id:number, myVar:string};
   paramsSubscription: Subscription;
 
+  myQueryParams = {};
+  myFrag = '';
+
   constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -32,6 +35,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
           this.testPathParam.myVar = params['myVar'];
         }
       );
+
+    this.activatedRoute.queryParams.subscribe((data) => {
+
+    });
+    this.activatedRoute.fragment.subscribe((data) => {
+
+    });
   }
 
   onAddTestElement(nameInput: HTMLInputElement) {

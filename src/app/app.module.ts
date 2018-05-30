@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AppRoutingModule } from './app-routing';
+
 // Services
 import { TestService } from './services/test.service';
 import { ShoppingListService } from './services/shopping-list.service';
@@ -26,30 +28,31 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TestElementComponent } from './components/test-element/test-element.component';
 import { DropdownDirective } from './directives/dropdown.directive';
 
-const appRoutes: Routes = [
-  {
-    path: '',
-    component: TestElementComponent
-  },
-  {
-    path: '1',
-    component: ShoppingListComponent
-  },
-  {
-    path: '2',
-    component: DashboardComponent
-  },
-  {
-    // dynamic path parameters via :
-    path: '2/:id/:myVar',
-    component: DashboardComponent
-  },
-  {
-    // dynamic path parameters via :
-    path: '2/:id/edit',
-    component: DashboardComponent
-  },
-];
+// const appRoutes: Routes = [
+//   {
+//     path: '',
+//     component: TestElementComponent
+//   },
+//   {
+//     path: '1',
+//     component: ShoppingListComponent
+//   },
+//   {
+//     path: '2',
+//     component: DashboardComponent, children: [
+//       {
+//         // dynamic path parameters via :
+//         path: ':id/:myVar',
+//         component: DashboardComponent
+//       },
+//       {
+//         // dynamic path parameters via :
+//         path: ':id/edit',
+//         component: DashboardComponent
+//       },
+//     ]
+//   },
+// ];
 
 @NgModule({
   declarations: [
@@ -72,7 +75,8 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    // RouterModule.forRoot(appRoutes)
+    AppRoutingModule
   ],
   providers: [
     TestService,
