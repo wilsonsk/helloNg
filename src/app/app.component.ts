@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Observable, Observer, Subscription, interval } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -18,6 +19,22 @@ export class AppComponent implements OnInit, OnDestroy {
 
   testSubscription1: Subscription;
   testSubscription2: Subscription;
+
+  @ViewChild('f') signupForm: NgForm;
+
+  answer:string = '';
+  defaultEmail:string = 'default@email.com';
+
+  radioButtonValues = ['value1', 'value2', 'value3'];
+
+  user = {
+    name: '',
+    email: '',
+    answer: '',
+    radio: ''
+  }
+
+  submitted:boolean = false;
 
   constructor(private testService: TestService) {}
 
@@ -87,4 +104,45 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
 
+  // TEST Forms
+  // 1
+  // onSubmit(form: ElementRef) {
+  //   console.log(form);
+  // }
+  // 2
+  // onSubmit(form: NgForm) {
+  //   console.log(form);
+  // }
+  //
+  onSubmit() {
+    this.submitted = true;
+    this.user.name = this.signupForm.value.testFormGroup.name;
+    this.user.email = this.signupForm.value.testFormGroup.email;
+    this.user.answer = this.signupForm.value.testFormGroup.questionAnswer;
+    this.user.radio = this.signupForm.value.testFormGroup.radioTest;
+    console.log(this.signupForm.value.testFormGroup);
+
+    // reset form values and state/classes - you can maintain current values by passing same object as passed in setValue()
+    this.signupForm.reset();
+  }
+
+  suggestUserName() {
+    const suggestedName = 'Superuser';
+    // Overrides all values
+    // this.signupForm.setValue({
+    //   testFormGroup: {
+    //     name: suggestedName,
+    //     email: '',
+    //     questionAnswer: 'df',
+    //     radioTest: 'value1'
+    //   }
+    // });
+
+    // Prevents overriding of current values via patch
+    this.signupForm.form.patchValue({
+      testFormGroup: {
+        name: suggestedName
+      }
+    })
+  }
 }
