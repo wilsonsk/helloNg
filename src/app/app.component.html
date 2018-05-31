@@ -1,43 +1,45 @@
 <!-- <app-header (selectedFeature)="onNavigate($event)"></app-header> -->
+<app-header></app-header>
 <div class="container-fluid">
-  <!-- <div class="row">
-    <div class="col-xs-12">
-      <app-recipes *ngIf="loadedFeature === 'recipes'"></app-recipes>
-      <app-shopping-list *ngIf="loadedFeature === 'shopping-list'"></app-shopping-list>
-    </div>
-  </div> -->
-
-  <!-- TEST ROUTER START -->
   <div class="row">
     <div class="col-xs-12">
+      <!-- <app-recipes *ngIf="loadedFeature === 'recipes'"></app-recipes>
+      <app-shopping-list *ngIf="loadedFeature === 'shopping-list'"></app-shopping-list> -->
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <!-- TEST ROUTER START -->
+  <!-- <div class="row">
+    <div class="col-xs-12">
       <ul class="nav nav-tabs" style="margin-bottom:20px;">
-        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/">1</a></li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/">1</a></li> -->
         <!-- Relative path without '/' -->
-        <li routerLinkActive="active"><a routerLink="1">2</a></li>
+        <!-- <li routerLinkActive="active"><a routerLink="1">2</a></li> -->
         <!-- using routerLink as property binding you can then add longer paths/segments as an element of the array -->
         <!-- Absolute path via / appends to root domain -->
-        <li routerLinkActive="active"><a [routerLink]="['/2']">3</a></li>
-      </ul>
+        <!-- <li routerLinkActive="active"><a [routerLink]="['/2']">3</a></li>
+      </ul> -->
 
       <!-- <div *ngFor="let account of accounts">
         <h1>{{ account.name }}</h1>
         <h2>{{ account.status }}</h2>
-      </div> -->
+      </div>
 
-      <!-- <app-dashboard  (bpCreated)="onBluePrintAdded($event)" (testElementCreatedEvent)="onTestElementAdded($event)"></app-dashboard>
+      <app-dashboard  (bpCreated)="onBluePrintAdded($event)" (testElementCreatedEvent)="onTestElementAdded($event)"></app-dashboard>
       <app-test-element [testElement]="testElement" *ngFor="let testElement of testElements">
         <p #testingProjectingRef>
           <span *ngIf="testElement.type === 'test-element'" style="color:orangered">{{ testElement.content }}</span>
           <span *ngIf="testElement.type === 'blueprint'" style="color:#00eaff">{{ testElement.content }}</span>
         </p>
-      </app-test-element> -->
+      </app-test-element>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12">
       <router-outlet></router-outlet>
     </div>
-  </div>
+  </div> -->
   <!-- TEST ROUTER END -->
 
 </div>

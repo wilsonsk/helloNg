@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing';
+import { AppRoutingModule } from './app-routing.module';
 
 // Services
 import { TestService } from './services/test.service';
@@ -27,6 +27,8 @@ import { ShoppingListEditComponent } from './components/shopping-list/shopping-l
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TestElementComponent } from './components/test-element/test-element.component';
 import { DropdownDirective } from './directives/dropdown.directive';
+import { RecipesStartComponent } from './components/recipes/recipes-start/recipes-start.component';
+import { RecipeEditComponent } from './components/recipes/recipe-edit/recipe-edit.component';
 
 // const appRoutes: Routes = [
 //   {
@@ -71,6 +73,8 @@ import { DropdownDirective } from './directives/dropdown.directive';
     GoodPracticeHighlightDirective,
     TestStructuralDirective,
     DropdownDirective,
+    RecipesStartComponent,
+    RecipeEditComponent,
   ],
   imports: [
     BrowserModule,
