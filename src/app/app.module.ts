@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -79,6 +79,7 @@ import { RecipeEditComponent } from './components/recipes/recipe-edit/recipe-edi
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     // RouterModule.forRoot(appRoutes)
     AppRoutingModule
   ],
