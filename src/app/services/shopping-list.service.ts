@@ -8,6 +8,7 @@ import { Ingredient } from '../models/ingredient.model';
 export class ShoppingListService {
   // @Output() ingredientsChanged = new EventEmitter<Ingredient[]>();
   ingredientsChanged = new Subject<Ingredient[]>();
+  editingStarted = new Subject<number>();
 
   private ingredients: Ingredient[] = [
     new Ingredient('testIngredient1', '5'),
@@ -28,6 +29,20 @@ export class ShoppingListService {
 
   addIngredients(ingredients: Ingredient[]) {
     this.ingredients.push(...ingredients);
+    this.ingredientsChanged.next(this.ingredients.slice());
+  }
+
+  getIngredient(index:number) {
+    return this.ingredients[index];
+  }
+
+  updateIngredient(index: number, newIngredient: Ingredient) {
+    this.ingredients[index] = newIngredient;
+    this.ingredientsChanged.next(this.ingredients.slice());
+  }
+
+  deleteIngredient(index:number) {
+    this.ingredients.splice(index, 1);
     this.ingredientsChanged.next(this.ingredients.slice());
   }
 }
