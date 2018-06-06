@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { Subscription } from 'rxjs';
 import {  RecipeService } from '../services/recipe.service';
 
 import { Recipe } from '../models/recipe.model';
@@ -12,6 +12,7 @@ import { Recipe } from '../models/recipe.model';
 })
 export class RecipeBookComponent implements OnInit {
   recipes: Recipe[] = [];
+  recipesChangedSubscription: Subscription;
 
   // @Output() recipeSelected = new EventEmitter<Recipe>();
 
@@ -19,6 +20,9 @@ export class RecipeBookComponent implements OnInit {
 
   ngOnInit() {
     this.recipes = this.recipeService.getRecipes();
+    this.recipesChangedSubscription = this.recipeService.recipesChanged.subscribe((recipes: Recipe[]) => {
+      this.recipes = recipes;
+    });
   }
 
   onNewRecipe() {
