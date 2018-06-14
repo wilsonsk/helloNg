@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import {  RecipeService } from '../services/recipe.service';
@@ -10,7 +10,7 @@ import { Recipe } from '../models/recipe.model';
   templateUrl: './recipe-book.component.html',
   styleUrls: ['./recipe-book.component.scss']
 })
-export class RecipeBookComponent implements OnInit {
+export class RecipeBookComponent implements OnInit, OnDestroy {
   recipes: Recipe[] = [];
   recipesChangedSubscription: Subscription;
 
@@ -29,6 +29,9 @@ export class RecipeBookComponent implements OnInit {
     this.router.navigate(['new'], { relativeTo: this.activatedRoute });
   }
 
+  ngOnDestroy() {
+    this.recipesChangedSubscription.unsubscribe();
+  }
 
   // onRecipeSelected(recipe: Recipe) {
   //   this.recipeSelected.emit(recipe);

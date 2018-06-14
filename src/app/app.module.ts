@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 // Services
 import { TestService } from './services/test.service';
 import { ShoppingListService } from './services/shopping-list.service';
+import { RecipeService } from './components/recipes/services/recipe.service';
 
 // Directives
 import { BasicHighlightDirective } from './directives/basic-highlight.directive';
@@ -85,7 +86,8 @@ import { RecipeEditComponent } from './components/recipes/recipe-edit/recipe-edi
   ],
   providers: [
     TestService,
-    ShoppingListService
+    ShoppingListService,
+    RecipeService
   ],
   bootstrap: [AppComponent]
 })
